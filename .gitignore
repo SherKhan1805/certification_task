@@ -166,3 +166,5 @@ celerybeat-schedule.dat
 celerybeat-schedule.dir
 
 my_commands
+
+.DC_Store

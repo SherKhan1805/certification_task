@@ -18,6 +18,9 @@ class Contacts(models.Model):
     house_number = models.IntegerField(
         verbose_name='номер дома')
 
+    def __str__(self):
+        return self.email
+
     class Meta:
         verbose_name = 'контактные данные'
         verbose_name_plural = 'контактные данные'
@@ -33,6 +36,9 @@ class Products(models.Model):
         max_length=100, verbose_name='модель продукта')
     created_date = models.DateTimeField(
         auto_now_add=True, verbose_name='дата выхода продукта')
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'продукт'
@@ -52,6 +58,9 @@ class Factory(models.Model):
         Products, on_delete=models.CASCADE, verbose_name='продукт')
     created_date = models.DateTimeField(
         auto_now_add=True, verbose_name='дата создания')
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'завод'
@@ -74,6 +83,9 @@ class Retail(models.Model):
         default=0.00, max_digits=10, decimal_places=2, verbose_name='задолженность')
     created_date = models.DateTimeField(
         auto_now_add=True, verbose_name='дата создания')
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'розничная сеть'
@@ -98,6 +110,9 @@ class Entrepreneur(models.Model):
         default=0.00, max_digits=10, decimal_places=2, verbose_name='задолженность')
     created_date = models.DateTimeField(
         auto_now_add=True, verbose_name='дата создания')
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'индивидуальный предприниматель'
