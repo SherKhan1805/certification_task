@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from config.utils import NULLABLE
@@ -78,7 +79,7 @@ class Retail(models.Model):
     products = models.ForeignKey(
         Products, on_delete=models.CASCADE, verbose_name='продукт')
     provider_from_factory = models.ForeignKey(
-            Factory, on_delete=models.CASCADE, verbose_name='поставки с завода')
+        Factory, on_delete=models.CASCADE, verbose_name='поставки с завода')
     debt = models.DecimalField(
         default=0.00, max_digits=10, decimal_places=2, verbose_name='задолженность')
     created_date = models.DateTimeField(
@@ -103,13 +104,26 @@ class Entrepreneur(models.Model):
     products = models.ForeignKey(
         Products, on_delete=models.CASCADE, verbose_name='продукт')
     provider_from_factory = models.ForeignKey(
-            Factory, on_delete=models.CASCADE, verbose_name='поставки с завода', **NULLABLE)
+        Factory, on_delete=models.CASCADE, verbose_name='поставки с завода', **NULLABLE)
     provider_from_retailer = models.ForeignKey(
-            Retail, on_delete=models.CASCADE, verbose_name='поставки с розничной сети', **NULLABLE)
+        Retail, on_delete=models.CASCADE, verbose_name='поставки с розничной сети', **NULLABLE)
     debt = models.DecimalField(
         default=0.00, max_digits=10, decimal_places=2, verbose_name='задолженность')
     created_date = models.DateTimeField(
         auto_now_add=True, verbose_name='дата создания')
+
+    def clean(self):
+        """
+        Метод проверяет, что заполнено
+        одно поле: завод или розничная сеть.
+        """
+        if self.provider_from_factory and self.provider_from_retailer:
+            raise ValidationError('Может быть только один поставщик!')
+        elif not self.provider_from_factory and not self.provider_from_retailer:
+            raise ValidationError(
+                'Необходимо заполнить одно поле: '
+                'завод или розничная сеть.'
+            )
 
     def __str__(self):
         return self.name
@@ -117,3 +131,4 @@ class Entrepreneur(models.Model):
     class Meta:
         verbose_name = 'индивидуальный предприниматель'
         verbose_name_plural = 'индивидуальные предприниматели'
+

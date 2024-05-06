@@ -1,4 +1,6 @@
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+from users.permissions import IsActive
 
 from hierarchy.models import (
     Contacts,
@@ -12,7 +14,7 @@ from hierarchy.serializers import (
     ProductsSerializer,
     FactorySerializer,
     RetailSerializer,
-    EntrepreneurSerializer
+    EntrepreneurSerializer, EntrepreneurUpdateSerializer, RetailUpdateSerializer
 )
 
 
@@ -22,7 +24,7 @@ class ContactsCreateAPIView(generics.CreateAPIView):
     """
     serializer_class = ContactsSerializer
     queryset = Contacts.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ContactsListAPIView(generics.ListAPIView):
@@ -31,8 +33,7 @@ class ContactsListAPIView(generics.ListAPIView):
     """
     serializer_class = ContactsSerializer
     queryset = Contacts.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ContactsUpdateAPIView(generics.UpdateAPIView):
@@ -41,8 +42,7 @@ class ContactsUpdateAPIView(generics.UpdateAPIView):
     """
     serializer_class = ContactsSerializer
     queryset = Contacts.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ContactsRetrieveAPIView(generics.RetrieveAPIView):
@@ -51,8 +51,7 @@ class ContactsRetrieveAPIView(generics.RetrieveAPIView):
     """
     serializer_class = ContactsSerializer
     queryset = Contacts.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ContactsDestroyAPIView(generics.DestroyAPIView):
@@ -61,8 +60,7 @@ class ContactsDestroyAPIView(generics.DestroyAPIView):
     """
     serializer_class = ContactsSerializer
     queryset = Contacts.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ProductsCreateAPIView(generics.CreateAPIView):
@@ -71,8 +69,7 @@ class ProductsCreateAPIView(generics.CreateAPIView):
     """
     serializer_class = ProductsSerializer
     queryset = Products.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ProductsListAPIView(generics.ListAPIView):
@@ -81,8 +78,7 @@ class ProductsListAPIView(generics.ListAPIView):
     """
     serializer_class = ProductsSerializer
     queryset = Products.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ProductsUpdateAPIView(generics.UpdateAPIView):
@@ -91,8 +87,7 @@ class ProductsUpdateAPIView(generics.UpdateAPIView):
     """
     serializer_class = ProductsSerializer
     queryset = Products.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ProductsRetrieveAPIView(generics.RetrieveAPIView):
@@ -101,8 +96,7 @@ class ProductsRetrieveAPIView(generics.RetrieveAPIView):
     """
     serializer_class = ProductsSerializer
     queryset = Products.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class ProductsDestroyAPIView(generics.DestroyAPIView):
@@ -111,8 +105,7 @@ class ProductsDestroyAPIView(generics.DestroyAPIView):
     """
     serializer_class = ProductsSerializer
     queryset = Products.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class FactoryCreateAPIView(generics.CreateAPIView):
@@ -121,8 +114,7 @@ class FactoryCreateAPIView(generics.CreateAPIView):
     """
     serializer_class = FactorySerializer
     queryset = Factory.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class FactoryListAPIView(generics.ListAPIView):
@@ -131,8 +123,7 @@ class FactoryListAPIView(generics.ListAPIView):
     """
     serializer_class = FactorySerializer
     queryset = Factory.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class FactoryUpdateAPIView(generics.UpdateAPIView):
@@ -141,8 +132,7 @@ class FactoryUpdateAPIView(generics.UpdateAPIView):
     """
     serializer_class = FactorySerializer
     queryset = Factory.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class FactoryRetrieveAPIView(generics.RetrieveAPIView):
@@ -151,8 +141,7 @@ class FactoryRetrieveAPIView(generics.RetrieveAPIView):
     """
     serializer_class = FactorySerializer
     queryset = Factory.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class FactoryDestroyAPIView(generics.DestroyAPIView):
@@ -161,8 +150,7 @@ class FactoryDestroyAPIView(generics.DestroyAPIView):
     """
     serializer_class = FactorySerializer
     queryset = Factory.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class RetailCreateAPIView(generics.CreateAPIView):
@@ -171,8 +159,7 @@ class RetailCreateAPIView(generics.CreateAPIView):
     """
     serializer_class = RetailSerializer
     queryset = Retail.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class RetailListAPIView(generics.ListAPIView):
@@ -181,18 +168,16 @@ class RetailListAPIView(generics.ListAPIView):
     """
     serializer_class = RetailSerializer
     queryset = Retail.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class RetailUpdateAPIView(generics.UpdateAPIView):
     """
     Изменение розничной сети
     """
-    serializer_class = RetailSerializer
+    serializer_class = RetailUpdateSerializer
     queryset = Retail.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class RetailRetrieveAPIView(generics.RetrieveAPIView):
@@ -201,8 +186,7 @@ class RetailRetrieveAPIView(generics.RetrieveAPIView):
     """
     serializer_class = RetailSerializer
     queryset = Retail.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class RetailDestroyAPIView(generics.DestroyAPIView):
@@ -211,8 +195,7 @@ class RetailDestroyAPIView(generics.DestroyAPIView):
     """
     serializer_class = RetailSerializer
     queryset = Retail.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class EntrepreneurCreateAPIView(generics.CreateAPIView):
@@ -221,8 +204,7 @@ class EntrepreneurCreateAPIView(generics.CreateAPIView):
     """
     serializer_class = EntrepreneurSerializer
     queryset = Entrepreneur.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class EntrepreneurListAPIView(generics.ListAPIView):
@@ -231,18 +213,16 @@ class EntrepreneurListAPIView(generics.ListAPIView):
     """
     serializer_class = EntrepreneurSerializer
     queryset = Entrepreneur.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class EntrepreneurUpdateAPIView(generics.UpdateAPIView):
     """
     Изменение индивидуального предпринимателя
     """
-    serializer_class = EntrepreneurSerializer
+    serializer_class = EntrepreneurUpdateSerializer
     queryset = Entrepreneur.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class EntrepreneurRetrieveAPIView(generics.RetrieveAPIView):
@@ -251,8 +231,7 @@ class EntrepreneurRetrieveAPIView(generics.RetrieveAPIView):
     """
     serializer_class = EntrepreneurSerializer
     queryset = Entrepreneur.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
+    permission_classes = [IsAuthenticated, IsActive]
 
 
 class EntrepreneurDestroyAPIView(generics.DestroyAPIView):
@@ -261,6 +240,4 @@ class EntrepreneurDestroyAPIView(generics.DestroyAPIView):
     """
     serializer_class = EntrepreneurSerializer
     queryset = Entrepreneur.objects.all()
-    # permission_classes = [IsAuthenticated, IsModer]
-    pass
-
+    permission_classes = [IsAuthenticated, IsActive]
