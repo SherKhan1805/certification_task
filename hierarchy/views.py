@@ -125,6 +125,14 @@ class FactoryListAPIView(generics.ListAPIView):
     queryset = Factory.objects.all()
     permission_classes = [IsAuthenticated, IsActive]
 
+    def get_queryset(self):
+        """
+        Возможность фильтрации данных по стране поставщика.
+        """
+        country = self.request.query_params.get('country')
+        queryset = self.queryset.filter(contacts__country=country)
+        return queryset
+
 
 class FactoryUpdateAPIView(generics.UpdateAPIView):
     """
@@ -170,6 +178,14 @@ class RetailListAPIView(generics.ListAPIView):
     queryset = Retail.objects.all()
     permission_classes = [IsAuthenticated, IsActive]
 
+    def get_queryset(self):
+        """
+        Возможность фильтрации данных по стране поставщика.
+        """
+        country = self.request.query_params.get('country')
+        queryset = self.queryset.filter(contacts__country=country)
+        return queryset
+
 
 class RetailUpdateAPIView(generics.UpdateAPIView):
     """
@@ -214,6 +230,14 @@ class EntrepreneurListAPIView(generics.ListAPIView):
     serializer_class = EntrepreneurSerializer
     queryset = Entrepreneur.objects.all()
     permission_classes = [IsAuthenticated, IsActive]
+
+    def get_queryset(self):
+        """
+        Возможность фильтрации данных по стране поставщика.
+        """
+        country = self.request.query_params.get('country')
+        queryset = self.queryset.filter(contacts__country=country)
+        return queryset
 
 
 class EntrepreneurUpdateAPIView(generics.UpdateAPIView):

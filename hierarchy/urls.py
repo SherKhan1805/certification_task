@@ -33,18 +33,18 @@ app_name = HierarchyConfig.name
 
 urlpatterns = [
     # контакты
-    path('contacts/create/', ContactsCreateAPIView.as_view(), name='contacts_create'),
-    path('contacts/list/', ContactsListAPIView.as_view(), name='contacts_list'),
-    path('contacts/update/<int:pk>/', ContactsUpdateAPIView.as_view(), name='contacts_update'),
-    path('contacts/delete/<int:pk>/', ContactsDestroyAPIView.as_view(), name='contacts_delete'),
-    path('contacts/<int:pk>/', ContactsRetrieveAPIView.as_view(), name='contacts_get'),
+    path('contact/create/', ContactsCreateAPIView.as_view(), name='contacts_create'),
+    path('contact/list/', ContactsListAPIView.as_view(), name='contacts_list'),
+    path('contact/update/<int:pk>/', ContactsUpdateAPIView.as_view(), name='contacts_update'),
+    path('contact/delete/<int:pk>/', ContactsDestroyAPIView.as_view(), name='contacts_delete'),
+    path('contact/<int:pk>/', ContactsRetrieveAPIView.as_view(), name='contacts_get'),
 
     # продукты
-    path('products/create/', ProductsCreateAPIView.as_view(), name='products_create'),
-    path('products/list/', ProductsListAPIView.as_view(), name='products_list'),
-    path('products/update/<int:pk>/', ProductsUpdateAPIView.as_view(), name='products_update'),
-    path('products/delete/<int:pk>/', ProductsDestroyAPIView.as_view(), name='products_delete'),
-    path('products/<int:pk>/', ProductsRetrieveAPIView.as_view(), name='products_get'),
+    path('product/create/', ProductsCreateAPIView.as_view(), name='products_create'),
+    path('product/list/', ProductsListAPIView.as_view(), name='products_list'),
+    path('product/update/<int:pk>/', ProductsUpdateAPIView.as_view(), name='products_update'),
+    path('product/delete/<int:pk>/', ProductsDestroyAPIView.as_view(), name='products_delete'),
+    path('product/<int:pk>/', ProductsRetrieveAPIView.as_view(), name='products_get'),
 
     # заводы
     path('factory/create/', FactoryCreateAPIView.as_view(), name='factory_create'),

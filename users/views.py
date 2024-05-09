@@ -3,7 +3,6 @@ from rest_framework.permissions import IsAuthenticated
 
 from users.models import User
 from users.paginators import UserPagination
-from users.permissions import IsUser
 from users.serializers import UserSerializer
 
 from django.contrib.auth.hashers import make_password
@@ -41,6 +40,7 @@ class UserRetrieveAPIView(generics.RetrieveAPIView):
     """
     Просмотр одного пользователя
     """
+    serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = [IsAuthenticated]
 
@@ -51,7 +51,7 @@ class UserUpdateAPIView(generics.UpdateAPIView):
     """
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated, IsUser]
+    permission_classes = [IsAuthenticated]
 
 
 class UserDestroyAPIView(generics.DestroyAPIView):
@@ -59,5 +59,6 @@ class UserDestroyAPIView(generics.DestroyAPIView):
     Удаление пользователя
     """
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated, IsUser]
+    permission_classes = [IsAuthenticated]
+
 
